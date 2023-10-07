@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,13 +9,21 @@ const Header = () => {
     <Container>
       <Items>
         <Link to='/popular'>
-          <Item>POPULAR {location?.pathname.startsWith('/popular') && <Circle />}</Item>
+          <Item>
+            POPULAR {location?.pathname.startsWith('/popular') && <Circle layoutId='circle' />}
+          </Item>
         </Link>
         <Link to='/coming-soon'>
-          <Item>COMING SOON {location?.pathname.startsWith('/coming-soon') && <Circle />}</Item>
+          <Item>
+            COMING SOON{' '}
+            {location?.pathname.startsWith('/coming-soon') && <Circle layoutId='circle' />}
+          </Item>
         </Link>
         <Link to='/now-playing'>
-          <Item>NOW PLAYING {location?.pathname.startsWith('/now-playing') && <Circle />}</Item>
+          <Item>
+            NOW PLAYING{' '}
+            {location?.pathname.startsWith('/now-playing') && <Circle layoutId='circle' />}
+          </Item>
         </Link>
       </Items>
     </Container>
@@ -42,7 +51,7 @@ const Item = styled.li`
   cursor: pointer;
 `;
 
-const Circle = styled.span`
+const Circle = styled(motion.span)`
   position: absolute;
   width: 0.5rem;
   height: 0.5rem;

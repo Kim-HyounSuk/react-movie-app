@@ -10,19 +10,26 @@ const Header = () => {
       <Items>
         <Link to='/popular'>
           <Item>
-            POPULAR {location?.pathname.startsWith('/popular') && <Circle layoutId='circle' />}
+            POPULAR
+            {location?.pathname.startsWith('/popular') && (
+              <Circle layoutId='circle' layout={true} />
+            )}
           </Item>
         </Link>
         <Link to='/coming-soon'>
           <Item>
-            COMING SOON{' '}
-            {location?.pathname.startsWith('/coming-soon') && <Circle layoutId='circle' />}
+            COMING SOON
+            {location?.pathname.startsWith('/coming-soon') && (
+              <Circle layoutId='circle' layout={true} />
+            )}
           </Item>
         </Link>
         <Link to='/now-playing'>
           <Item>
-            NOW PLAYING{' '}
-            {location?.pathname.startsWith('/now-playing') && <Circle layoutId='circle' />}
+            NOW PLAYING
+            {location?.pathname.startsWith('/now-playing') && (
+              <Circle layoutId='circle' layout={true} />
+            )}
           </Item>
         </Link>
       </Items>
@@ -34,12 +41,19 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  padding-top: 4rem;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 const Items = styled.ul`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  gap: 1rem;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
 `;
 
 const Item = styled.li`
@@ -48,6 +62,8 @@ const Item = styled.li`
   justify-content: center;
   align-items: center;
   position: relative;
+  font-size: 1.25rem;
+  font-weight: 600;
   cursor: pointer;
 `;
 

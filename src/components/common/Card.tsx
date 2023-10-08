@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface CardProps {
   id: number;
@@ -8,19 +8,24 @@ interface CardProps {
 }
 
 const Card = ({ id, title, imgUrl }: CardProps) => {
+  const navigate = useNavigate();
+  const onCardClicked = (id: number) => {
+    navigate(`${id}`);
+  };
+
   return (
-    <Container>
-      <Link to={`:${id}`}>
-        <Wrapper>
-          <Title>{title}</Title>
-          <Img src={imgUrl} />
-        </Wrapper>
-      </Link>
+    <Container onClick={() => onCardClicked(id)}>
+      <Wrapper>
+        <Title>{title}</Title>
+        <Img src={imgUrl} />
+      </Wrapper>
     </Container>
   );
 };
 
-const Container = styled.li``;
+const Container = styled.li`
+  cursor: pointer;
+`;
 
 const Wrapper = styled.div``;
 

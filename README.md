@@ -1,5 +1,5 @@
-# React + TypeScript + Vite
+# React Movie App
 
-- **Boilerplate**
-  <br/>
-  Vite 프로젝트 초기 설정(React + Typescript + eslint)
+- **Practice react-router-dom**<br/>
+- **Practice react-query**<br/>
+- **Practice framer-motion**

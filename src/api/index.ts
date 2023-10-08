@@ -1,12 +1,10 @@
 import base from './base';
 
-export const getPopular = async <T>(): Promise<T> => base.get('/popular').then((res) => res.data);
+const getPopular = async <T>(): Promise<T> => base.get('/popular').then((res) => res.data);
 
-export const getNowPlaying = async <T>(): Promise<T> =>
-  base.get('/now-playing').then((res) => res.data);
+const getNowPlaying = async <T>(): Promise<T> => base.get('/now-playing').then((res) => res.data);
 
-export const getComingSoon = async <T>(): Promise<T> =>
-  base.get('/coming-soon').then((res) => res.data);
+const getComingSoon = async <T>(): Promise<T> => base.get('/coming-soon').then((res) => res.data);
 
 export const getMovie = async <T>(id: string): Promise<T> =>
   base.get(`/movie?id=${id}`).then((res) => res.data);
@@ -14,6 +12,16 @@ export const getMovie = async <T>(id: string): Promise<T> =>
 export const makeImagePath = (image: string) => `https://image.tmdb.org/t/p/w500${image}`;
 
 export const makeBgPath = (image: string) => `https://image.tmdb.org/t/p/original${image}`;
+
+export const apiMap: Record<ICategory['category'], () => Promise<IAPIResponse>> = {
+  popular: getPopular,
+  'coming-soon': getComingSoon,
+  'now-playing': getNowPlaying,
+};
+
+export interface ICategory {
+  category: 'popular' | 'coming-soon' | 'now-playing';
+}
 
 interface IMovie {
   adult: boolean;

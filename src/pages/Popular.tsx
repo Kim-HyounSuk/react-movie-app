@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Popular = () => {
   return (
     <Container>
-      <CardList category='popular' />
+      <CardList />
     </Container>
   );
 };

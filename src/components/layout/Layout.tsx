@@ -10,7 +10,7 @@ const Layout = () => {
 };
 
 const Container = styled.div`
-  padding: 5rem 2.5rem;
+  padding: 7rem 2.5rem;
 `;
 
 export default Layout;

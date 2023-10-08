@@ -9,7 +9,7 @@ const Header = () => {
     <Container>
       <Items>
         <Link to='/popular'>
-          <Item>
+          <Item cur='/popular'>
             POPULAR
             {location?.pathname.startsWith('/popular') && (
               <Circle layoutId='circle' layout={true} />
@@ -17,7 +17,7 @@ const Header = () => {
           </Item>
         </Link>
         <Link to='/coming-soon'>
-          <Item>
+          <Item cur='/coming-soon'>
             COMING SOON
             {location?.pathname.startsWith('/coming-soon') && (
               <Circle layoutId='circle' layout={true} />
@@ -25,7 +25,7 @@ const Header = () => {
           </Item>
         </Link>
         <Link to='/now-playing'>
-          <Item>
+          <Item cur='/now-playing'>
             NOW PLAYING
             {location?.pathname.startsWith('/now-playing') && (
               <Circle layoutId='circle' layout={true} />
@@ -43,8 +43,9 @@ const Container = styled.nav`
   align-items: center;
   position: fixed;
   width: 100%;
-  padding-top: 4rem;
+  padding-top: 2.5rem;
   background-color: ${(props) => props.theme.bgColor};
+  z-index: 99;
 `;
 
 const Items = styled.ul`
@@ -56,7 +57,7 @@ const Items = styled.ul`
   padding-bottom: 1.5rem;
 `;
 
-const Item = styled.li`
+const Item = styled.li<{ cur: string }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,6 +66,10 @@ const Item = styled.li`
   font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
+  &:hover {
+    color: ${(props) =>
+      !location?.pathname.startsWith(props.cur) ? props.theme.semiBgColor : 'inherit'};
+  }
 `;
 
 const Circle = styled(motion.span)`

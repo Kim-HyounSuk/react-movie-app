@@ -1,9 +1,14 @@
+import { CardList } from '@/components';
+import styled from 'styled-components';
+
 const NowPlaying = () => {
   return (
-    <>
-      <h1>NowPlaying</h1>
-    </>
+    <Container>
+      <CardList />
+    </Container>
   );
 };
+
+const Container = styled.div``;
 
 export default NowPlaying;
